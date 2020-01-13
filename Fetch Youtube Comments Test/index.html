@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Document</title>
+</head>
+<body>
+
+    <div id="app" v-if="dataComments">
+    <div class="container mt-5">
+            <div class="input-group mb-3">
+                    <input v-model="videoId" type="text" class="form-control" placeholder="Video Id">
+                    <input v-model="fileTitle" type="text" class="form-control" placeholder="fileTitle">
+                    <div class="input-group-append">
+                            <button @click="getData(videoId)" type="button" class="btn btn-primary">Download</button>
+                    </div>
+                  </div>
+            <div v-for="comm in dataComments">
+                {{comm.snippet && comm.snippet.topLevelComment.snippet.textOriginal}}
+                {{comm.snippet && comm.snippet.topLevelComment.snippet.publishedAt}}
+            </div>
+    </div>
+    </div>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://fastcdn.org/FileSaver.js/1.1.20151003/FileSaver.min.js"></script>
+
+    <script src="jszip.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script src="youtube.js"></script>
+</body>
+</html>
